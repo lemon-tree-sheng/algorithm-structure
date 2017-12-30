@@ -3,8 +3,11 @@ package org.sheng.mc.util;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.RandomUtils;
 import org.sheng.mc.algorithm.sort.InsertSort;
+import org.sheng.mc.algorithm.sort.MergeSort;
 import org.sheng.mc.algorithm.sort.SelectionSort;
 import org.sheng.mc.algorithm.sort.SortAlgorithm;
+
+import static org.junit.Assert.assertTrue;
 
 /**
  * 测试工具类
@@ -16,11 +19,11 @@ public class TestUtil {
     /**
      * 测试数组的大小
      */
-    public static final int TEST_ARR_SIZE = 100000;
+    public static final int TEST_ARR_SIZE = 50000;
     /**
      * 生成的数组取值范围为 0 ~ TEST_ARR_MAX_INT
      */
-    public static final int TEST_ARR_MAX_INT = 100;
+    public static final int TEST_ARR_MAX_INT = 50000;
 
     /**
      * 生成随机整数数组
@@ -95,7 +98,7 @@ public class TestUtil {
         sortAlgorithm.sort(arr, n);
         long stop = System.currentTimeMillis();
 
-        assert isSorted(arr);
+        assertTrue(isSorted(arr));
         System.out.printf("%s : %dms%n", sortName, stop - start);
     }
 
@@ -111,5 +114,6 @@ public class TestUtil {
         Integer[] testArr = genNearlyOrderdArray(TEST_ARR_SIZE);
         testSort(InsertSort.SORT_NAME, new InsertSort(), testArr, TEST_ARR_SIZE);
         testSort(SelectionSort.SORT_NAME, new SelectionSort(), testArr, TEST_ARR_SIZE);
+        testSort(MergeSort.SORT_NAME, new MergeSort(), testArr, TEST_ARR_SIZE);
     }
 }
