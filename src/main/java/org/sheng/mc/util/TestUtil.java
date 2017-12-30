@@ -1,6 +1,9 @@
 package org.sheng.mc.util;
 
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.RandomUtils;
+import org.sheng.mc.algorithm.sort.InsertSort;
+import org.sheng.mc.algorithm.sort.SelectionSort;
 import org.sheng.mc.algorithm.sort.SortAlgorithm;
 
 /**
@@ -13,7 +16,11 @@ public class TestUtil {
     /**
      * 测试数组的大小
      */
-    public static final int TEST_ARR_SIZE = 10000;
+    public static final int TEST_ARR_SIZE = 100000;
+    /**
+     * 生成的数组取值范围为 0 ~ TEST_ARR_MAX_INT
+     */
+    public static final int TEST_ARR_MAX_INT = 100;
 
     /**
      * 生成随机整数数组
@@ -28,6 +35,25 @@ public class TestUtil {
             intList[i] = RandomUtils.nextInt(0, maxInt);
         }
         return intList;
+    }
+
+    /**
+     * 生成一个近乎有序的数组
+     *
+     * @param n
+     * @return
+     */
+    public static Integer[] genNearlyOrderdArray(Integer n) {
+        Integer[] arr = new Integer[n];
+        for (Integer i = 0; i < n; i++) {
+            arr[i] = i;
+        }
+
+        // 随机找出数组中两个尽量不同的位置
+        int randomIdx1 = RandomUtils.nextInt(0, n - 1);
+        int randomIdx2 = RandomUtils.nextInt(0, n - 1);
+        ArrayUtils.swap(arr, randomIdx1, randomIdx2);
+        return arr;
     }
 
     /**
@@ -70,7 +96,20 @@ public class TestUtil {
         long stop = System.currentTimeMillis();
 
         assert isSorted(arr);
-        System.out.printf("%s spent %dms%n", sortName, stop - start);
-        printArr(arr);
+        System.out.printf("%s : %dms%n", sortName, stop - start);
+    }
+
+    /**
+     * 简单比较插入排序和选择排序的时间性能
+     * 第一版插入排序由于有过多的交换，导致交换产生的性能损失比较大，比较起来，插入排序比选择排序要慢，因为选择排序没有多余的交换动作
+     * 第二版插入排序将交换变成简单的赋值，又由于插入可以提前结束，所以插入排序一般比选择排序要快，数组越有序，性能优势越大，性能可能达到 O(n) 级别
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        // 当生成一个近乎有序的数组测试两个排序算法的时候，插入排序的时间性能优势极大
+        Integer[] testArr = genNearlyOrderdArray(TEST_ARR_SIZE);
+        testSort(InsertSort.SORT_NAME, new InsertSort(), testArr, TEST_ARR_SIZE);
+        testSort(SelectionSort.SORT_NAME, new SelectionSort(), testArr, TEST_ARR_SIZE);
     }
 }

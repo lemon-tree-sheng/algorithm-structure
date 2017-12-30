@@ -3,6 +3,8 @@ package org.sheng.mc.algorithm.sort;
 import org.sheng.mc.util.TestUtil;
 
 import static org.apache.commons.lang3.ArrayUtils.swap;
+import static org.sheng.mc.util.TestUtil.TEST_ARR_MAX_INT;
+import static org.sheng.mc.util.TestUtil.genRandomArray;
 
 /**
  * 选择排序
@@ -29,10 +31,6 @@ public class SelectionSort implements SortAlgorithm {
      */
     @Override
     public Integer[] sort(Integer[] arr, Integer n) {
-        if (n == 1) {
-            return arr;
-        }
-
         for (int i = 0; i < n - 1; i++) {
             // 临时存放当前索引，并且默认最小
             int tempMinIndex = i;
@@ -56,6 +54,6 @@ public class SelectionSort implements SortAlgorithm {
      * @param args
      */
     public static void main(String[] args) {
-        TestUtil.testSort(SORT_NAME, new SelectionSort(), TestUtil.genRandomArray(TEST_ARR_SIZE, TEST_ARR_SIZE), TEST_ARR_SIZE);
+        TestUtil.testSort(SORT_NAME, new SelectionSort(), genRandomArray(TEST_ARR_MAX_INT, TEST_ARR_SIZE), TEST_ARR_SIZE);
     }
 }
