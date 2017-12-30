@@ -52,6 +52,7 @@ public class SelectionSort implements SortAlgorithm {
 
     /**
      * 测试入口
+     *
      * @param args
      */
     public static void main(String[] args) {

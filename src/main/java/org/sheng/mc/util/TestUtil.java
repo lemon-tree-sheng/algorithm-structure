@@ -11,6 +11,11 @@ import org.sheng.mc.algorithm.sort.SortAlgorithm;
 public class TestUtil {
 
     /**
+     * 测试数组的大小
+     */
+    public static final int TEST_ARR_SIZE = 10000;
+
+    /**
      * 生成随机整数数组
      *
      * @param maxInt 最大整数
