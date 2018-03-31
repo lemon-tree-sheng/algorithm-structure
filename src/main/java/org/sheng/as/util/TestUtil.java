@@ -1,11 +1,12 @@
-package org.sheng.mc.util;
+package org.sheng.as.util;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.RandomUtils;
-import org.sheng.mc.algorithm.sort.InsertSort;
-import org.sheng.mc.algorithm.sort.MergeSort;
-import org.sheng.mc.algorithm.sort.SelectionSort;
-import org.sheng.mc.algorithm.sort.SortAlgorithm;
+import org.sheng.as.algorithm.sort.InsertSort;
+import org.sheng.as.algorithm.sort.MergeSort;
+import org.sheng.as.algorithm.sort.QuickSort;
+import org.sheng.as.algorithm.sort.SelectionSort;
+import org.sheng.as.algorithm.sort.SortAlgorithm;
 
 import static org.junit.Assert.assertTrue;
 
@@ -19,11 +20,11 @@ public class TestUtil {
     /**
      * 测试数组的大小
      */
-    public static final int TEST_ARR_SIZE = 50000;
+    public static final int ARR_SIZE = 10000;
     /**
-     * 生成的数组取值范围为 0 ~ TEST_ARR_MAX_INT
+     * 生成的数组取值范围为 0 ~ MAX_INT
      */
-    public static final int TEST_ARR_MAX_INT = 50000;
+    public static final int MAX_INT = 10000;
 
     /**
      * 生成随机整数数组
@@ -33,11 +34,11 @@ public class TestUtil {
      * @return
      */
     public static Integer[] genRandomArray(Integer maxInt, Integer n) {
-        Integer[] intList = new Integer[n];
+        Integer[] arr = new Integer[n];
         for (Integer i = 0; i < n; i++) {
-            intList[i] = RandomUtils.nextInt(0, maxInt);
+            arr[i] = RandomUtils.nextInt(0, maxInt);
         }
-        return intList;
+        return arr;
     }
 
     /**
@@ -111,9 +112,13 @@ public class TestUtil {
      */
     public static void main(String[] args) {
         // 当生成一个近乎有序的数组测试两个排序算法的时候，插入排序的时间性能优势极大
-        Integer[] testArr = genNearlyOrderdArray(TEST_ARR_SIZE);
-        testSort(InsertSort.SORT_NAME, new InsertSort(), testArr, TEST_ARR_SIZE);
-        testSort(SelectionSort.SORT_NAME, new SelectionSort(), testArr, TEST_ARR_SIZE);
-        testSort(MergeSort.SORT_NAME, new MergeSort(), testArr, TEST_ARR_SIZE);
+        // 测试几乎有序的数组
+//        Integer[] testArr = genNearlyOrderdArray(ARR_SIZE);
+        // 测试完全乱序的数组
+        Integer[] testArr = genRandomArray(MAX_INT, ARR_SIZE);
+        testSort(InsertSort.SORT_NAME, new InsertSort(), testArr, ARR_SIZE);
+        testSort(SelectionSort.SORT_NAME, new SelectionSort(), testArr, ARR_SIZE);
+        testSort(MergeSort.SORT_NAME, new MergeSort(), testArr, ARR_SIZE);
+        testSort(QuickSort.SORT_NAME, new QuickSort(), testArr, ARR_SIZE);
     }
 }

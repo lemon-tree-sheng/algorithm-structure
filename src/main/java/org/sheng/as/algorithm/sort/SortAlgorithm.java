@@ -1,4 +1,4 @@
-package org.sheng.mc.algorithm.sort;
+package org.sheng.as.algorithm.sort;
 
 /**
  * @author shengxingyue, created on 2017/12/30

@@ -1,10 +1,10 @@
-package org.sheng.mc.algorithm.sort;
+package org.sheng.as.algorithm.sort;
 
-import org.sheng.mc.util.TestUtil;
+import org.sheng.as.util.TestUtil;
 
-import static org.sheng.mc.util.TestUtil.TEST_ARR_MAX_INT;
-import static org.sheng.mc.util.TestUtil.TEST_ARR_SIZE;
-import static org.sheng.mc.util.TestUtil.genRandomArray;
+import static org.sheng.as.util.TestUtil.MAX_INT;
+import static org.sheng.as.util.TestUtil.ARR_SIZE;
+import static org.sheng.as.util.TestUtil.genRandomArray;
 
 /**
  * @author shengxingyue, created on 2017/12/30
@@ -40,6 +40,6 @@ public class InsertSort implements SortAlgorithm {
     }
 
     public static void main(String[] args) {
-        TestUtil.testSort(SORT_NAME, new InsertSort(), genRandomArray(TEST_ARR_MAX_INT, TEST_ARR_SIZE), TEST_ARR_SIZE);
+        TestUtil.testSort(SORT_NAME, new InsertSort(), genRandomArray(MAX_INT, ARR_SIZE), ARR_SIZE);
     }
 }
