@@ -1,6 +1,6 @@
 package org.sheng.as.algorithm.dynamicprogramming.fibonacci;
 
-import static org.sheng.as.util.ListUtil.initList;
+import static org.sheng.as.util.ArrayUtil.initArray;
 
 /**
  * @author shengxingyue on 2018/4/23 21:27
@@ -10,7 +10,7 @@ import static org.sheng.as.util.ListUtil.initList;
  */
 public class Fibonacci03 {
     static int fib(int n) {
-        Integer[] memo = initList(n, -1);
+        Integer[] memo = initArray(n, -1);
         memo[0] = 1;
         memo[1] = 1;
         for (int i = 2; i < n; i++) {

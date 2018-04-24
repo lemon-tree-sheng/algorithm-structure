@@ -1,6 +1,6 @@
 package org.sheng.as.algorithm.dynamicprogramming.integerbreak;
 
-import static org.sheng.as.util.ListUtil.initList;
+import static org.sheng.as.util.ArrayUtil.initArray;
 import static org.sheng.as.util.MathUtil.max3;
 
 /**
@@ -8,7 +8,7 @@ import static org.sheng.as.util.MathUtil.max3;
  * 记忆化搜索
  */
 public class IntegerBreak02 {
-    static Integer[] memo = initList(1000, -1);
+    static Integer[] memo = initArray(1000, -1);
 
     static int breakInteger(int n) {
         memo[0] = 1;

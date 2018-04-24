@@ -1,6 +1,6 @@
 package org.sheng.as.algorithm.dynamicprogramming.houserobber;
 
-import org.sheng.as.util.ListUtil;
+import org.sheng.as.util.ArrayUtil;
 
 import static java.lang.Math.max;
 
@@ -9,7 +9,7 @@ import static java.lang.Math.max;
  */
 public class HouseRobber03 {
 
-    static Integer[] memo = ListUtil.initList(1000, -1);
+    static Integer[] memo = ArrayUtil.initArray(1000, -1);
     static int rob(int[] arr, int begin) {
         if (begin >= arr.length) {
             return 0;
